@@ -1,5 +1,6 @@
 package com.example.diceout;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -17,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -94,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
     public void rollDice(View v){
         rollResult.setText("Clicked!");
 
@@ -109,11 +111,34 @@ public class MainActivity extends AppCompatActivity {
         dice.add(die2);
         dice.add(die3);
 
+        for (int dieOfSet = 0; dieOfSet <3; dieOfSet++){
+            String imageName = "die_" + dice.get (dieOfSet) + ".png";
+
+            try {
+                InputStream stream = getAssets().open(imageName);
+                Drawable d = Drawable.createFromStream(stream,null);
+                diceImageViews.get(dieOfSet).setImageDrawable(d);
+
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+
+
+
+
+        }
+
+
         //build message with the result
         String msg = "you rolled a " +die1+" "+die2+" "+die3;
 
         //update the app to display the result message
         rollResult.setText(msg);
+
+
+
+
+
 
     }
 
