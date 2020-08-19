@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
 
     //array list to hold all 3 dice values
     ArrayList<Integer> dice;
+
+    //arraylist to hold all 3 images
+    ArrayList<ImageView> diceImageViews;
 
 
 
@@ -74,6 +78,17 @@ public class MainActivity extends AppCompatActivity {
         //create arraylist container for dice values
         dice = new ArrayList<Integer>();
 
+        ImageView die1Image = (ImageView) findViewById(R.id.die1Image);
+        ImageView die2Image = (ImageView) findViewById(R.id.die2Image);
+        ImageView die3Image = (ImageView) findViewById(R.id.die3Image);
+
+
+        diceImageViews = new ArrayList<ImageView>();
+        diceImageViews.add(die1Image);
+        diceImageViews.add(die2Image);
+        diceImageViews.add(die3Image);
+
+
 
     }
 
@@ -82,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void rollDice(View v){
         rollResult.setText("Clicked!");
-
 
         //roll dice
         die1 = rand.nextInt(6) + 1;
@@ -95,17 +109,11 @@ public class MainActivity extends AppCompatActivity {
         dice.add(die2);
         dice.add(die3);
 
-
         //build message with the result
         String msg = "you rolled a " +die1+" "+die2+" "+die3;
 
-
-
         //update the app to display the result message
         rollResult.setText(msg);
-
-
-
 
     }
 
