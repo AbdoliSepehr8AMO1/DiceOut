@@ -59,4 +59,13 @@
         tools:layout_editor_absoluteX="155dp"
         tools:layout_editor_absoluteY="16dp" />
 
+    <TextView
+        android:id="@+id/scoreText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Score: 0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
