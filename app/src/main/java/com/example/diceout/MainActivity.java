@@ -98,11 +98,8 @@ public class MainActivity extends AppCompatActivity {
         diceImageViews.add(die3Image);
 
 
-
-
-
-
     }
+
 
 
 
@@ -132,24 +129,34 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-
-
-
         }
 
 
         //build message with the result
-        String msg = "you rolled a " +die1+" "+die2+" "+die3;
+        String msg;
+
+        if(die1 == die2 && die1 == die3) {
+            //triples
+            int scoreDelta = die1 * 100;
+            msg = "You rolled a triple" + die1 + "! you score " + scoreDelta + " points!";
+            score += scoreDelta;
+
+        } else if (die1 == die2 || die1 == die3 || die2 == die3) {
+
+            //doubles
+            msg = "you rolled doubles for 50 points";
+            score += 50;
+        } else {
+            msg = "you didn't score this roll. try again!";
+        }
+
 
         //update the app to display the result message
         rollResult.setText(msg);
-
-
-
-
-
+        scoreText.setText("score: " + score);
 
     }
+
 
 
 
